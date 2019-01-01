@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="utf-8">
+   <title>Independent VPN</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+   <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+</head>
+
+<header>
+  <nav class="navbar navbar-dark" style="background-color: #202a2f;">
+        <span class="navbar-brand mb-0 h1" style="color: #41ef3b">Independent VPN</span>
+    </nav>
+</header>
+
+<style type="text/css">
+    main{
+        padding: 2%;
+        
+    }
+</style>
+
+<body style="background-color: #202020;">
+   <main>{% block body %}{% endblock %}</main>
+
+   <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+   <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+</body>
+
+</html>

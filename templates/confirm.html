@@ -1,0 +1,26 @@
+{% extends "header.html" %} {% block body %}
+
+<h3 style="color: white; text-align: center;">
+Please confirm that you will create the following VPN on {{provider}}.
+After you confirm, your account will be charged by the hour.
+</h3>
+<br>
+
+<form action="/create-vpn" method="post">
+    <input type = "hidden" name = "token" value = "{{token}}" />
+    <button type="submit" class="btn btn-primary btn-lg" style="margin: auto; display: block;" onclick="displaySpinner()">Create VPN</button></a>
+</form>
+
+<div class="spinner-border text-light invisible" role="status" style="margin: auto; display: block;" id="spinner">
+  <span class="sr-only">Loading...</span>
+</div>
+
+
+<script type="text/javascript">
+    function displaySpinner(){
+        spinner = document.getElementById("spinner")
+        spinner.classList.remove("invisible")
+        spinner.classList.add("visible")
+    }
+</script>
+{% endblock %}
