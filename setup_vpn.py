@@ -1,10 +1,15 @@
 import pysftp
-from linode import LinodeClient
+from linode_api4 import LinodeClient
 
 
-def create_linode_vpn(token, region="us-west", ltype="g6-nanode-1", image="linode/ubuntu18.10"):
+def create_vpn(provider, token):
+    if provider == "Linode":
+        create_linode_vpn(token)
+
+
+def create_linode_vpn(token, region="eu-west", ltype="g6-nanode-1", image="linode/ubuntu18.10"):
     client = LinodeClient(token)
-    linode, password = client.linode.create_instance(ltype, region, image=image)
+    linode, password = client.linode.instance_create(ltype, region, image=image)
     print(password)
     print(linode.status)
     setup(linode.ipv4[0], "root", password, linode)

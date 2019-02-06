@@ -1,7 +1,7 @@
 from flask import Flask, render_template, redirect, request
-from linode import LinodeLoginClient, OAuthScopes
+from linode_api4 import LinodeLoginClient, OAuthScopes
 from keys import LINODE_API_KEY, LINODE_CLIENT_ID
-from setup_vpn import create_linode_vpn
+from setup_vpn import create_vpn
 
 app = Flask(__name__)
 
@@ -25,7 +25,7 @@ Create VPN with Linode API
 def linode_oauth():
     login_client = LinodeLoginClient(LINODE_CLIENT_ID, LINODE_API_KEY)
 
-    redirect_to = login_client.generate_login_url(scopes=OAuthScopes.all)
+    redirect_to = login_client.generate_login_url(scopes=[OAuthScopes.Linodes.create, OAuthScopes.Linodes.modify, OAuthScopes.Linodes.view])
 
     return redirect(redirect_to)
 
@@ -35,7 +35,7 @@ def linode_oauth_redirect():
     login_client = LinodeLoginClient(LINODE_CLIENT_ID, LINODE_API_KEY)
 
     code = request.args["code"]
-    token, scopes = login_client.finish_oauth(code)
+    token = login_client.finish_oauth(code)[0]
 
     print(token)
 
@@ -48,10 +48,10 @@ Create VPN with Digital Ocean API
 
 
 @app.route("/create-vpn", methods=['POST'])
-def create_vpn():
+def create_vpn_on_server():
     # use linode api to create a vpn
     token = request.form["token"]
-    create_linode_vpn(token)
+    create_vpn("Linode", token)
     return render_template("success.html")
 
 
