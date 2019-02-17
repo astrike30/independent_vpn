@@ -1,0 +1,146 @@
+{% extends "header.html" %} {% block body %}
+
+<div class="accordion" id="accordionExample" style="background-color: #202a2f">
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h2 class="mb-0">
+        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            How is this different from a normal VPN provider?
+        </button>
+      </h2>
+    </div>
+
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+      <div class="card-body">
+        We allow you to setup a VPN on a private web server, let to you by a hosting company. These private hosting companies aren't in the business of selling your data like normal VPN providers. We also don't have access to the VPN server once it's setup, so we can't log you.
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingTwo">
+      <h2 class="mb-0">
+        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            How do I set this up?
+        </button>
+      </h2>
+    </div>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+      <div class="card-body">
+        Go <a href="/setup">here</a>, choose a provider and follow the instructions. Once a file ending in .ovpn has been downloaded, open this file in an OpenVPN client for your operating system (there are loads of free ones) and you should be able to connect easily. You can use the one .ovpn file on as many devices as you want.
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingThree">
+      <h2 class="mb-0">
+        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          How do I delete the VPN?
+        </button>
+      </h2>
+    </div>
+    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+      <div class="card-body">
+        Go <a href="https://manager.linode.com/linodes">here</a>, login and click <b>Remove</b> on the Linode with the IP of your VPN. Providers charge by the hour, so you will only be charged for the portion of a month that the VPN was active.
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header" id="headingFour">
+      <h2 class="mb-0">
+        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+          How do I change the location of my VPN?
+        </button>
+      </h2>
+    </div>
+    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+      <div class="card-body">
+        Just follow the instructions to delete the VPN above and follow setup again <a href="/setup">here</a>. As providers bill by the hour, you won't be charged for another month or any extra for changing locations.
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header" id="headingFive">
+      <h2 class="mb-0">
+        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+          Do you have access to my logs / can you access the VPN server?
+        </button>
+      </h2>
+    </div>
+    <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
+      <div class="card-body">
+        No. We access your server once to setup the server, once this is done we revoke our access to your Linode account as well. We don't save the password and we don't keep the .ovpn file.
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header" id="headingSix">
+      <h2 class="mb-0">
+        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+          Do you have access to my Linode account?
+        </button>
+      </h2>
+    </div>
+    <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionExample">
+      <div class="card-body">
+        No. We revoke our access token each time you setup a new server. You can confirm that <a href="https://cloud.linode.com/profile/clients">here</a>.
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header" id="headingSeven">
+      <h2 class="mb-0">
+        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+          Do you handle payment or give any of my data to the hosting provider?
+        </button>
+      </h2>
+    </div>
+    <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordionExample">
+      <div class="card-body">
+        No. Payment is handled by the hosting company you choose and you give them your details when you sign up. We never see or save any of your information.
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header" id="headingEight">
+      <h2 class="mb-0">
+        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+          What is OpenVPN?
+        </button>
+      </h2>
+    </div>
+    <div id="collapseEight" class="collapse" aria-labelledby="headingEight" data-parent="#accordionExample">
+      <div class="card-body">
+        OpenVPN is open source software that creates secure VPN servers. Your VPN uses this standard. We are not involved in the development of OpenVPN and cannot be held responsible for its vulnerabilities, should any be discovered.
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header" id="headingNine">
+      <h2 class="mb-0">
+        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+          What are some OpenVPN clients?
+        </button>
+      </h2>
+    </div>
+    <div id="collapseNine" class="collapse" aria-labelledby="headingNine" data-parent="#accordionExample">
+      <div class="card-body">
+        Here are some OpenVPN clients for popular operating systems, which are all open source:
+
+        - Mac: <a href="https://tunnelblick.net">Tunnelblick</a>
+        - iOS: <a href="https://itunes.apple.com/za/app/openvpn-connect/id590379981?mt=8">OpenVPN Connect</a>
+        - Windows: <a href="https://openvpn.net/vpn-server-resources/connecting-to-access-server-with-windows/">OpenVPN Connect</a>
+        - Android: <a href="https://play.google.com/store/apps/details?id=net.openvpn.openvpn&hl=en_ZA">OpenVPN Connect</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+{% endblock %}

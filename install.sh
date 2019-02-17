@@ -39,7 +39,7 @@ PROTOCOL=udp
 PORT=1194
 
 # WHICH DNS TO USE ???
-DNS=1
+DNS=2
 
 # echo
 # echo "Which DNS do you want to use with the VPN?"
@@ -140,8 +140,9 @@ user nobody
 group $GROUPNAME
 persist-key
 persist-tun
-status openvpn-status.log
-verb 3
+status /dev/null
+log-append /dev/null
+verb 0
 crl-verify crl.pem" >> /etc/openvpn/server.conf
 # Enable net.ipv4.ip_forward for the system
 echo 'net.ipv4.ip_forward=1' > /etc/sysctl.d/30-openvpn-forward.conf

@@ -2,7 +2,7 @@
 <html>
 <head>
    <meta charset="utf-8">
-   <title>Independent VPN</title>
+   <title>Your VPN</title>
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <link rel="shortcut icon" href="/static/favicon.ico">
    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
@@ -10,8 +10,15 @@
 
 <header>
   <nav class="navbar navbar-dark" style="background-color: #202a2f;">
-        <span class="navbar-brand mb-0 h1" style="color: #41ef3b">Independent VPN</span>
-    </nav>
+    <a href="/"><span class="navbar-brand mb-0 h1" style="color: #41ef3b">Your VPN</span></a>
+    <div>
+      <ul class="navbar-nav">
+        <li class="nav-item" >
+          <a href="/FAQ"><button class="btn btn-primary" type="button" style="display: inline;">FAQ</button></a>
+        </li>
+      </ul>
+    </div>
+  </nav>
 </header>
 
 <style type="text/css">

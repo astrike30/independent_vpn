@@ -1,26 +1,53 @@
 {% extends "header.html" %} {% block body %}
+<div id="container">
+    <h3 style="color: white; text-align: center;">
+    Please confirm that you will create the following VPN on {{provider}}.
+    After you confirm, your account will be charged at the monthly rate.
+    </h3>
 
-<h3 style="color: white; text-align: center;">
-Please confirm that you will create the following VPN on {{provider}}.
-After you confirm, your account will be charged by the hour.
-</h3>
-<br>
+    <div class="form-group">
+        <label for="exampleFormControlSelect1">Select a region for your vpn:</label>
+        <select class="form-control" id="regionSelect">
+            {% for region in regions %}
+                <option>{{region}}</option>
+            {% endfor %}
+        </select>
+    </div>
 
-<form action="/create-vpn" method="post">
-    <input type = "hidden" name = "token" value = "{{token}}" />
-    <button type="submit" class="btn btn-primary btn-lg" style="margin: auto; display: block;" onclick="">Create VPN</button></a>
-</form>
+    <button type="submit" class="btn btn-primary btn-lg" style="margin: auto; display: block;" onclick="displaySpinner();">Create VPN</button>
 
-<div class="spinner-border text-light" role="status">
-  <span class="sr-only">Loading...</span>
+    <a href="mailto:astrike30@gmail.com"><div style="min-width: 60%; min-height: 30%; margin: auto; display: block; margin-top: 8%; padding-top: 10px; padding-bottom: 10px; border-style: dashed; border-color: #41ef3b">
+
+        <a href="mailto:astrike30@gmail.com"><h3 style="color: white; text-align: center;">Advertise here to a tech-savvy audience for really cheap.</h3></a>
+
+    </div></a>
+
 </div>
-
 <script type="text/javascript">
     function displaySpinner(){
-        spinner = document.getElementById("spinner")
-        spinner.classList.remove("invisible")
-        spinner.classList.add("visible")
+        var region = document.getElementById("regionSelect").value;
+        document.getElementById("container").innerHTML = `
+        <h3 style="color: white; text-align: center;">
+            Please be extra-patient, this could take up to a few minutes. Your OpenVPN config file will be downloaded after the VPN is setup.
+        </h3>
+
+        <img src="{{url_for('static', filename='loading.gif')}}" style="margin: auto; display: block;"/>"
+
+        <form action="/create-vpn" method="post" id="createForm">
+            <input type = "hidden" name = "token" value = "{{token}}" />
+            <input type = "hidden" name = "region" id="regionInput" />
+        </form>
+
+        <a href="mailto:astrike30@gmail.com"><div style="min-width: 60%; min-height: 30%; margin: auto; display: block; margin-top: 5%; padding-top: 10px; padding-bottom: 10px; border-style: dashed; border-color: #41ef3b">
+
+            <a href="mailto:astrike30@gmail.com"><h3 style="color: white; text-align: center;">Advertise here to a tech-savvy audience for really cheap.</h3></a>
+
+        </div></a>
+        `;
+        document.getElementById("regionInput").value = region
+        document.getElementById('createForm').submit();
     }
+
 </script>
 
 {% endblock %}
