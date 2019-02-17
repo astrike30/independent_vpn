@@ -1,6 +1,7 @@
 import pysftp
 from linode_api4 import LinodeClient
 from constants import LINODE_REGIONS
+import os
 
 
 def create_vpn(provider, region, token):
@@ -33,6 +34,9 @@ def setup(ip, username, password, node, token):
     sftp.execute("bash install.sh")
     sftp.execute("mkdir profiles")
     sftp.execute("mv /root/yourkeyfile.ovpn /root/profiles/{}.ovpn".format(token))
+    if not os.path.exists(os.getcwd() + '/configs'):
+        os.makedirs(os.getcwd() + '/configs')
+
     sftp.get_d('/root/profiles', 'configs')
     sftp.close()
 
