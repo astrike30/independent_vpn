@@ -17,14 +17,14 @@ def create_linode_vpn(token, region="eu-west", ltype="g6-nanode-1", image="linod
     setup(linode.ipv4[0], "root", password, linode, token)
 
 
-def setup(ip, username, password, node, token):
+def setup(ip, username, password, node, token="token"):
     cnopts = pysftp.CnOpts()
     cnopts.hostkeys = None
 
     connected = False
     while not connected:
         try:
-            print(node.status)
+            # print(node.status)
             sftp = pysftp.Connection(ip, username=username, password=password, cnopts=cnopts)
             connected = True
         except Exception as e:
@@ -38,10 +38,11 @@ def setup(ip, username, password, node, token):
         os.makedirs(os.getcwd() + '/configs')
 
     sftp.get_d('/root/profiles', 'configs')
+    sftp.execute('rm install.sh')
     sftp.close()
 
 
 if __name__ == "__main__":
-    setup("88.80.188.89", "root", "n04cce55")
+    setup("45.33.15.88", "root", "n04cce55", None)
     # sftp = pysftp.Connection("88.80.188.89", username="root", password="n04cce55")
     # sftp.put("openvpn-install.sh")
