@@ -22,6 +22,11 @@ def help():
     return render_template("help.html")
 
 
+@app.route("/donate")
+def donate():
+    return render_template("donate.html")
+
+
 """
 Create VPN with Linode API
 """
@@ -62,8 +67,10 @@ def create_vpn_on_server():
     # use linode api to create a vpn
     token = request.form["token"]
     region = request.form["region"]
-    create_vpn("Linode", region, token)
-    return render_template("success.html", token=token)
+    ip, password = create_vpn("Linode", region, token)
+    print(ip)
+    print(password)
+    return render_template("success.html", token=token, ip=ip, password=password)
 
 
 """
