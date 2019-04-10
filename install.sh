@@ -36,7 +36,7 @@ IP=$(ip addr | grep 'inet' | grep -v inet6 | grep -vE '127\.[0-9]{1,3}\.[0-9]{1,
 
 PROTOCOL=udp
 
-PORT=1194
+PORT=443
 
 # WHICH DNS TO USE ???
 DNS=2
