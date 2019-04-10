@@ -6,7 +6,7 @@ import os
 
 def create_vpn(provider, region, token):
     if provider == "Linode":
-        create_linode_vpn(token, region=LINODE_REGIONS[region])
+        return create_linode_vpn(token, region=LINODE_REGIONS[region])
 
 
 def create_linode_vpn(token, region="eu-west", ltype="g6-nanode-1", image="linode/ubuntu18.10"):
@@ -14,7 +14,7 @@ def create_linode_vpn(token, region="eu-west", ltype="g6-nanode-1", image="linod
     linode, password = client.linode.instance_create(ltype, region, image=image)
     print(password)
     print(linode.status)
-    setup(linode.ipv4[0], "root", password, linode, token)
+    return setup(linode.ipv4[0], "root", password, linode, token)
 
 
 def setup(ip, username, password, node, token="token"):
@@ -40,6 +40,7 @@ def setup(ip, username, password, node, token="token"):
     sftp.get_d('/root/profiles', 'configs')
     sftp.execute('rm install.sh')
     sftp.close()
+    return ip, password
 
 
 if __name__ == "__main__":
