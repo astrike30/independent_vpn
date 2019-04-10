@@ -1,14 +1,27 @@
 {% extends "header.html" %} {% block body %}
+<style type="text/css">
+    @media only screen and (min-width: 768px) {
+      .mobile_visible {
+        display: none;
+      }
+    }
+
+</style>
 <div>
-    <h1 style="color: white; font-size: 5em" align="center">Ensure your privacy.<br>Setup your own VPN.</h1>
+    <div class="mobile_visible" style="width: 65%; height: 30%; margin: auto;">
+        <br>
+        <a href="/setup"><button type="button" class="btn btn-secondary btn-lg btn-block" style="margin: auto">Setup Now</button></a>
+    </div>
     <br>
+    <h1 style="color: white; font-size: 5em" align="center">Ensure your privacy.<br>Setup your own VPN.</h1>
+    
     <h3 style="color: white; font-size: 2.5em" align="center">Your VPN allows you to setup your own privately run OpenVPN server on your own Linux server, away from the prying eyes of a VPN company.</h3>
     <br>
     <div style="width: 50%; height: 30%; margin: auto;">
         <a href="/setup"><button type="button" class="btn btn-secondary btn-lg btn-block" style="margin: auto">Setup Now</button></a>
     </div>
     <br>
-    <button style="white-space: normal;" type="submit" class="btn btn-lg btn-danger" style="margin: auto; display: block"><b>Pls Donate</b>, I'm an 18 yr old who makes no money from this :)</button>
+    <button type="submit" class="btn btn-lg btn-danger" style="margin: auto; display: block; white-space: normal;"><b>Pls Donate</b>, I'm an 18 yr old who makes no money from this :)</button>
     <br>
     <div>
         <h3 style="color: white; font-weight: lighter;">VPN providers can't be trusted. The free ones are open about invading your privacy and selling your data (and they're slow). While the paid ones promise not not to sell your data, it's easy and profitable for them to do so. Running your own VPN on an independent hosting provider's network is the best option. An independent host selling your data is extremely unlikely because they're generally more reluctant to look at or sell your data. It just doesn't align with their business model. With prices starting at $5, it's a cheap option too.</h3>
