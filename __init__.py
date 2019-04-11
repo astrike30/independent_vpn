@@ -37,6 +37,16 @@ def page_not_found(e):
     return render_template('404.html'), 404
 
 
+@app.errorhandler(502)
+def time_out_502(e):
+    return render_template('timeout.html'), 502
+
+
+@app.errorhandler(504)
+def time_out_504(e):
+    return render_template('timeout.html'), 504
+
+
 """
 Create VPN with Linode API
 """
